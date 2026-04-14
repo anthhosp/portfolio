@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anthony — Portfolio BTS SIO SISR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050b18;
+      --surface: #0a1628;
+      --border: #0f2444;
+      --accent: #00d4ff;
+      --accent2: #0077ff;
+      --text: #d0e8ff;
+      --muted: #4a7a9b;
+      --tag-bg: #071020;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(10, 12, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 3rem 3rem;
+      position: relative;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,119,255,0.07) 0%, transparent 70%);
+    }
+
+    .hero-grid-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+      opacity: 0.5;
+    }
+
+    .hero-grid-line:nth-child(1) { left: 25%; }
+    .hero-grid-line:nth-child(2) { left: 50%; }
+    .hero-grid-line:nth-child(3) { left: 75%; }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.35s forwards;
+    }
+
+    .hero-name span {
+      -webkit-text-stroke: 1px var(--accent);
+      color: transparent;
+      text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.5s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.65s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #050b18;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: #00aacc;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    .hero-status {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 6rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* ─── ABOUT / PARCOURS ─── */
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 36px;
+      top: 30px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      padding-top: 4px;
+      text-align: right;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 31px;
+      top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-content h4 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ─── SKILLS ─── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.08);
+    }
+
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-icon {
+      width: 36px; height: 36px;
+      background: var(--tag-bg);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .skill-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.2rem 0.55rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.03em;
+    }
+
+    .tag.hot {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ─── PROJECTS ─── */
+    #projects { background: var(--bg); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.1);
+    }
+
+    .project-thumb {
+      height: 160px;
+      background: var(--tag-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(232,82,26,0.08));
+    }
+
+    .project-type {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    .type-bts { background: rgba(0,119,255,0.15); color: #60aaff; border: 1px solid rgba(0,119,255,0.3); }
+    .type-perso { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.25); }
+    .type-alternance { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ─── ALTERNANCE ─── */
+    #alternance {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .alternance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .company-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+    }
+
+    .company-logo-placeholder {
+      width: 60px; height: 60px;
+      background: var(--accent2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0,119,255,0.3);
+    }
+
+    .company-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .company-card .role {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .company-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .missions-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mission-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s;
+    }
+
+    .mission-item:hover { border-color: var(--accent); }
+
+    .mission-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      padding-top: 2px;
+      min-width: 24px;
+    }
+
+    .mission-text h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .mission-text p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .contact-box .section-title { margin-bottom: 1rem; }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 5rem 1.5rem 3rem; }
+      .about-grid, .alternance-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-status { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">A.PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="#about">Parcours</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#alternance">Alternance</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-line"></div>
+    <div class="hero-grid-line"></div>
+    <div class="hero-grid-line"></div>
+
+    <p class="hero-eyebrow">// BTS SIO option SISR — 2024–2026</p>
+    <h1 class="hero-name">Anthony<br><span>Technicien</span><br>Support IT</h1>
+    <p class="hero-subtitle">
+      En alternance chez <strong>Kem One</strong> (Fos-sur-Mer) · Passionné d'infrastructure, homelab, réseau & cybersécurité.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Voir mes projets →</a>
+      <a href="#contact" class="btn btn-ghost">Me contacter</a>
+    </div>
+
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      Disponible · Bouches-du-Rhône
+    </div>
+  </section>
+
+  <!-- ABOUT / PARCOURS -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">// 01 — Parcours</p>
+      <h2 class="section-title">Mon profil</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          Reconverti dans l'informatique après un parcours en commerce, je prépare un <strong>BTS SIO option SISR</strong>
+          en alternance dans la région PACA. Mon quotidien allie support helpdesk, projets d'infrastructure et
+          apprentissage continu.
+        </p>
+        <p>
+          À côté de mon alternance, je maintiens un <strong>homelab complet sous Proxmox</strong> où je pratique
+          la virtualisation, l'administration réseau, la supervision et l'automatisation. Objectif à terme :
+          <strong>CCNA</strong>, puis BUT R&T Cybersécurité.
+        </p>
+        <p>
+          Je travaille vite, j'apprends par la pratique, et j'aime comprendre pourquoi ça marche — pas juste que ça marche.
+        </p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <span class="timeline-year">2024</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>BTS SIO SISR — En cours</h4>
+            <p>Formation en alternance · Infrastructure, réseau, cybersécurité</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2024</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Technicien Support N1 — Kem One</h4>
+            <p>Helpdesk, Active Directory, projets IT · Fos-sur-Mer</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2023</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Reconversion professionnelle</h4>
+            <p>Décision de basculer vers l'IT après un BTS Commerce</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2020</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>BTS Commerce</h4>
+            <p>Formation initiale, expériences variées en entreprise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="reveal">
+      <p class="section-label">// 02 — Compétences</p>
+      <h2 class="section-title">Stack technique</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🌐</div>
+          <h3>Réseau</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag hot">TCP/IP</span>
+          <span class="tag hot">VLANs</span>
+          <span class="tag">DNS / DHCP</span>
+          <span class="tag">NAT / Routage</span>
+          <span class="tag">OPNsense</span>
+          <span class="tag">Wireshark</span>
+          <span class="tag">OSI Model</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🖥️</div>
+          <h3>Virtualisation</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag hot">Proxmox VE</span>
+          <span class="tag hot">LXC / VM</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">ZeroTier</span>
+          <span class="tag">Snapshots & Backup</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🪟</div>
+          <h3>Windows Server / AD</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag hot">Active Directory</span>
+          <span class="tag hot">GPO</span>
+          <span class="tag">Windows Server 2022</span>
+          <span class="tag">LDAP / NTLM</span>
+          <span class="tag">GLPI</span>
+          <span class="tag">Support N1</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">🐧</div>
+          <h3>Linux</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag hot">Debian / Ubuntu</span>
+          <span class="tag">Apache2 / Nginx</span>
+          <span class="tag">BIND9</span>
+          <span class="tag">Bash</span>
+          <span class="tag">iptables</span>
+          <span class="tag">Cron</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">📊</div>
+          <h3>Supervision & Monitoring</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag hot">Zabbix</span>
+          <span class="tag">Uptime Kuma</span>
+          <span class="tag">AdGuard Home</span>
+          <span class="tag">Zabbix Agent2</span>
+          <span class="tag">Alerting</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <div class="skill-icon">💻</div>
+          <h3>Dev & Scripting</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag hot">Python</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">Electron.js</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">ldap3</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="reveal">
+      <p class="section-label">// 03 — Projets</p>
+      <h2 class="section-title">Réalisations</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          🏭
+          <span class="project-type type-alternance">Alternance</span>
+        </div>
+        <div class="project-body">
+          <h3>Outil de gestion IT — Kem One</h3>
+          <p>Application Streamlit en Python intégrant la gestion AD/LDAP (auth NTLM), un stock matériel SQLite et une UI aux couleurs Kem One (marine/orange).</p>
+          <div class="skill-tags">
+            <span class="tag hot">Python</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">LDAP3</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Active Directory</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          🚪
+          <span class="project-type type-bts">BTS</span>
+        </div>
+        <div class="project-body">
+          <h3>Portail d'Onboarding Employé</h3>
+          <p>Application Electron.js avec splash animée, récupération automatique du username AD, et dashboard de bienvenue pour les nouveaux arrivants de Kem One.</p>
+          <div class="skill-tags">
+            <span class="tag hot">Electron.js</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          🌐
+          <span class="project-type type-bts">BTS</span>
+        </div>
+        <div class="project-body">
+          <h3>Infrastructure GSB — Proxmox</h3>
+          <p>Déploiement complet d'une infra 3 serveurs (DNS BIND9, Apache2, Nginx reverse proxy) via Terraform et Ansible. Domaine <code>troubleshooter.lan</code> en LXC.</p>
+          <div class="skill-tags">
+            <span class="tag hot">Proxmox</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">BIND9</span>
+            <span class="tag">Nginx</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          🏠
+          <span class="project-type type-perso">Homelab</span>
+        </div>
+        <div class="project-body">
+          <h3>Homelab Personnel</h3>
+          <p>Mini PC i5-8500 / 32GB RAM sous Proxmox. Héberge OPNsense, Windows Server 2022 + AD, AdGuard, GLPI, Zabbix, Ansible et Uptime Kuma en production.</p>
+          <div class="skill-tags">
+            <span class="tag hot">Proxmox</span>
+            <span class="tag">OPNsense</span>
+            <span class="tag">Windows Server 2022</span>
+            <span class="tag">Zabbix</span>
+            <span class="tag">GLPI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          📡
+          <span class="project-type type-bts">BTS</span>
+        </div>
+        <div class="project-body">
+          <h3>Infrastructure GSB — Services IT</h3>
+          <p>Déploiement d'AdGuard, Uptime Kuma et GLPI en LXC sur VLAN 300 (172.16.0.0/24), avec règles DNAT iptables et dashboard lighttpd.</p>
+          <div class="skill-tags">
+            <span class="tag">AdGuard</span>
+            <span class="tag">Uptime Kuma</span>
+            <span class="tag">GLPI</span>
+            <span class="tag">iptables</span>
+            <span class="tag">VLAN</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb">
+          🎮
+          <span class="project-type type-perso">Perso</span>
+        </div>
+        <div class="project-body">
+          <h3>Serveur Minecraft — Spellnomia</h3>
+          <p>Serveur Forge 1.20.1 sur Proxmox CT (Debian 12). Gestion RAM, conflits ZeroTier, redémarrages cron automatisés, backups Proxmox, monitoring Zabbix Agent2.</p>
+          <div class="skill-tags">
+            <span class="tag">Proxmox</span>
+            <span class="tag">Debian 12</span>
+            <span class="tag">Bash / Cron</span>
+            <span class="tag">Zabbix</span>
+            <span class="tag">ZeroTier</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ALTERNANCE -->
+  <section id="alternance">
+    <div class="reveal">
+      <p class="section-label">// 04 — Alternance</p>
+      <h2 class="section-title">Kem One — Fos-sur-Mer</h2>
+    </div>
+
+    <div class="alternance-grid">
+      <div class="company-card reveal">
+        <div class="company-logo-placeholder">K1</div>
+        <h3>Kem One</h3>
+        <p class="role">Technicien Support IT N1 · 2024–2026</p>
+        <p>
+          Kem One est un industriel chimique français spécialisé dans le PVC, basé à Fos-sur-Mer (13).
+          Le service IT gère l'infrastructure d'un site de production critique.
+        </p>
+      </div>
+
+      <ul class="missions-list reveal">
+        <li class="mission-item">
+          <span class="mission-num">01</span>
+          <div class="mission-text">
+            <h4>Support Helpdesk N1</h4>
+            <p>Prise en charge des incidents utilisateurs, diagnostic matériel et logiciel, escalade si nécessaire.</p>
+          </div>
+        </li>
+        <li class="mission-item">
+          <span class="mission-num">02</span>
+          <div class="mission-text">
+            <h4>Administration Active Directory</h4>
+            <p>Création et gestion de comptes, GPO, groupes de sécurité, intégration LDAP.</p>
+          </div>
+        </li>
+        <li class="mission-item">
+          <span class="mission-num">03</span>
+          <div class="mission-text">
+            <h4>Développement d'outils IT internes</h4>
+            <p>Création d'un outil Streamlit (Python) pour la gestion AD et le stock matériel. Portail d'onboarding Electron.js.</p>
+          </div>
+        </li>
+        <li class="mission-item">
+          <span class="mission-num">04</span>
+          <div class="mission-text">
+            <h4>Projets d'infrastructure</h4>
+            <p>Participation aux projets réseau et serveurs en lien avec le programme BTS SIO SISR.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-box reveal">
+      <p class="section-label">// 05 — Contact</p>
+      <h2 class="section-title">Travaillons ensemble</h2>
+      <p>Étudiant en BTS SIO SISR, disponible pour échanger sur des opportunités en infrastructure, cloud ou cybersécurité.</p>
+      <div class="contact-links">
+        <a href="mailto:votre.email@example.com" class="btn btn-primary">📧 M'envoyer un mail</a>
+        <a href="https://linkedin.com/in/votre-profil" target="_blank" class="btn btn-ghost">LinkedIn →</a>
+        <a href="https://github.com/votre-github" target="_blank" class="btn btn-ghost">GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 — Anthony · BTS SIO SISR</span>
+    <span>Fait avec HTML / CSS / JS · Bouches-du-Rhône</span>
+  </footer>
+
+  <script>
+    // Intersection Observer pour les animations au scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
