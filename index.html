@@ -670,6 +670,13 @@
     .m2s-hero img {
       height: 48px; width: auto;
     }
+
+    #network-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.38;
+    }
 </style>
 </head>
 <body>
@@ -689,36 +696,37 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">BTS SIO · Option SISR · 2025–2027</div>
-    <h1 class="hero-name">Anthony<span>.</span></h1>
-    <p class="hero-role">Technicien Support IT N1</p>
-    <p class="hero-desc">
-      En alternance chez <strong>Kem One</strong> à Fos-sur-Mer.<br>
-      Passionné d'infrastructure, de réseau et de cybersécurité —<br>
-      avec un homelab Proxmox en production permanente.
-    </p>
-    <div class="hero-actions">
-      <a href="#projets" class="btn btn-blue">Voir mes projets</a>
-      <a href="#contact" class="btn btn-ghost-d">Me contacter</a>
+  <canvas id="network-canvas"></canvas>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">BTS SIO · Option SISR · 2025–2027</div>
+      <h1 class="hero-name">Anthony<span>.</span></h1>
+      <p class="hero-role">Technicien Support IT N1</p>
+      <p class="hero-desc">
+        En alternance chez <strong>Kem One</strong> à Fos-sur-Mer.<br>
+        Passionné d'infrastructure, de réseau et de cybersécurité<br>
+        avec un homelab Proxmox en production permanente.
+      </p>
+      <div class="hero-actions">
+        <a href="#projets" class="btn btn-blue">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost-d">Me contacter</a>
+      </div>
     </div>
-  </div>
 
-  <div class="hero-stats">
-    <div class="h-stat">
-      <div class="h-stat-val">2 ans</div>
-      <div class="h-stat-label">Alternance Kem One</div>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-stat-val">2 ans</div>
+        <div class="h-stat-label">Alternance Kem One</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val">6+</div>
+        <div class="h-stat-label">Projets réalisés</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val">8+</div>
+        <div class="h-stat-label">Services en homelab</div>
+      </div>
     </div>
-    <div class="h-stat">
-      <div class="h-stat-val">6+</div>
-      <div class="h-stat-label">Projets réalisés</div>
-    </div>
-    <div class="h-stat">
-      <div class="h-stat-val">8+</div>
-      <div class="h-stat-label">Services en homelab</div>
-    </div>
-  </div>
-</section>
+  </section>
 
 <!-- 01 — PRÉSENTATION -->
 <section class="s-light" id="presentation">
@@ -745,7 +753,7 @@
         </p>
         <p>
           Objectif à court terme : intégrer le <strong>BUT R&T Cybersécurité</strong> en 3e année à l'IUT
-          Marseille Luminy, puis viser un master ou une école d'ingénieurs — et travailler à terme
+          Marseille Luminy, puis viser un master ou une école d'ingénieurs et travailler à terme
           à l'étranger dans l'infra, le cloud ou le DevOps.
         </p>
       </div>
@@ -775,7 +783,7 @@
               <div class="tl-body"><h4>Technicien N1 — Kem One</h4><p>Contrat d'apprentissage · Fos-sur-Mer</p></div>
             </div>
             <div class="tl-row">
-              <span class="tl-year">2023</span>
+              <span class="tl-year">2024</span>
               <div class="tl-body"><h4>Reconversion IT</h4><p>Décision de basculer vers l'informatique</p></div>
             </div>
             <div class="tl-row">
@@ -811,18 +819,17 @@
       <div class="ent-desc reveal" style="animation-delay:.1s">
         <p>
           <strong>Kem One</strong> est un groupe industriel chimique français, leader européen dans la production
-          de PVC. Le site de Fos-sur-Mer est un site de production critique opérant en continu — ce qui impose
+          de PVC. Le site de Fos-sur-Mer est un site de production critique opérant en continu, ce qui impose
           au service IT un niveau d'exigence élevé.
         </p>
         <div class="ent-quote">
-          Un environnement où chaque contrainte technique oblige à chercher une vraie solution — pas juste
+          Un environnement où chaque contrainte technique oblige à chercher une vraie solution, pas juste
           à suivre un tutoriel.
         </div>
         <p>
           L'infrastructure repose sur un domaine <strong>Active Directory</strong>, un parc Windows hétérogène
           et un proxy SSL qui contrôle tous les accès réseau. Cette contrainte m'a notamment forcé à développer
-          l'application Electron.js sur mon PC personnel pour contourner le blocage npm, puis livrer l'exécutable
-          compilé directement à la DSI.
+          l'application Electron.js sur mon PC personnel pour contourner le blocage npm.
         </p>
         <p>
           L'équipe IT réduite m'expose à une large variété de sujets chaque semaine : du ticket helpdesk
@@ -875,8 +882,7 @@
         <div class="tache-body">
           <h3>Développement d'outils IT internes</h3>
           <p>Outil de gestion IT (Python / Streamlit + LDAP3 / SQLite) rebuildé en PowerShell Windows Forms.
-          Portail d'onboarding Electron.js avec récupération automatique du username AD via PowerShell.
-          Livraison d'un .exe compilé à la DSI.</p>
+          Portail d'onboarding Electron.js avec récupération automatique du username AD via PowerShell.</p>
         </div>
         <div class="tache-tags">
           <span class="chip hi">Python</span>
@@ -940,7 +946,7 @@
         <span class="proj-type pt-alt">Alternance</span>
         <h3>Portail d'Onboarding Employé</h3>
         <p>Application desktop Electron.js : splash animée, récupération automatique du username AD
-        via PowerShell, dashboard de bienvenue personnalisé. Compilé en .exe, livré à la DSI.</p>
+        via PowerShell, dashboard de bienvenue personnalisé.</p>
         <div class="proj-stack">
           <span class="chip-d hi">Electron.js</span><span class="chip-d">Node.js</span>
           <span class="chip-d">PowerShell</span><span class="chip-d">AD</span>
@@ -1083,7 +1089,7 @@
       <p class="reveal">Étudiant BTS SIO SISR en alternance, disponible pour échanger
       sur des opportunités en infrastructure, réseau ou cybersécurité.</p>
       <div class="contact-btns reveal">
-        <a href="mailto:votre.email@example.com" class="btn btn-blue">Envoyer un message</a>
+        <a href="mailto:Anthony.HOSPITAL@m2sformation.com.com" class="btn btn-blue">Envoyer un message</a>
         <a href="https://linkedin.com/in/votre-profil" target="_blank" class="btn btn-ghost-d">LinkedIn</a>
         <a href="https://github.com/teazfiix-sys" target="_blank" class="btn btn-ghost-d">GitHub</a>
       </div>
@@ -1105,6 +1111,43 @@
   }, { threshold: 0.07 });
   els.forEach(el => io.observe(el));
 </script>
-
+<script>
+(function() {
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes, packets;
+  const NODE_COUNT = 28, LINK_DIST = 190;
+  const NODE_COLOR = 'rgba(79,142,247,0.9)', LINE_COLOR = 'rgba(79,142,247,0.18)', GLOW_COLOR = 'rgba(79,142,247,0.5)';
+  function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+  function makeNodes(){ nodes=[]; for(let i=0;i<NODE_COUNT;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()<.15?3.5:2}); }
+  function getEdges(){ const e=[]; for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;if(Math.sqrt(dx*dx+dy*dy)<LINK_DIST)e.push({a:i,b:j});} return e; }
+  function spawnPacket(){ const e=getEdges(); if(!e.length)return; const ed=e[Math.floor(Math.random()*e.length)]; packets.push({a:ed.a,b:ed.b,t:Math.random(),speed:.0012+Math.random()*.0018,dir:Math.random()<.5?1:-1}); }
+  function makePackets(){ packets=[]; for(let i=0;i<18;i++) spawnPacket(); }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const edges=getEdges();
+    ctx.strokeStyle=LINE_COLOR; ctx.lineWidth=1;
+    for(const e of edges){ctx.beginPath();ctx.moveTo(nodes[e.a].x,nodes[e.a].y);ctx.lineTo(nodes[e.b].x,nodes[e.b].y);ctx.stroke();}
+    for(const n of nodes){
+      const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*5); g.addColorStop(0,GLOW_COLOR); g.addColorStop(1,'transparent');
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r*5,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle=NODE_COLOR;ctx.fill();
+    }
+    for(const p of packets){
+      const na=nodes[p.a],nb=nodes[p.b],t=p.dir===1?p.t:1-p.t;
+      const x=na.x+(nb.x-na.x)*t,y=na.y+(nb.y-na.y)*t;
+      ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle='#fff';ctx.shadowColor='#4f8ef7';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;
+    }
+  }
+  function update(){
+    for(const n of nodes){n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;}
+    for(let i=packets.length-1;i>=0;i--){packets[i].t+=packets[i].speed;if(packets[i].t>1){packets.splice(i,1);spawnPacket();}}
+    while(packets.length<18) spawnPacket();
+  }
+  function loop(){update();draw();requestAnimationFrame(loop);}
+  window.addEventListener('resize',()=>{resize();makeNodes();});
+  resize(); makeNodes(); makePackets(); loop();
+})();
+</script>
 </body>
 </html>
