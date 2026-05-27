@@ -768,6 +768,26 @@
       .tache { grid-template-columns: 40px 1fr; }
       .proof-thumb { display: none; }
     }
+
+    .v-card-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: #dc2626;
+      background: rgba(220,38,38,0.07);
+      border: 1px solid rgba(220,38,38,0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      text-transform: uppercase;
+    }
+    .v-card-btn:hover {
+      background: rgba(220,38,38,0.14);
+      border-color: rgba(220,38,38,0.45);
+    }
 </style>
 </head>
 <body>
@@ -1130,6 +1150,7 @@
           <li>Attaques sur environnements OT/IT industriels</li>
           <li>Wazuh, Suricata, Snort</li>
         </ul>
+        <button class="v-card-btn" onclick="openVeille()">CVE-2026-31431 — Copy Fail →</button>
       </div>
 
       <div class="v-card">
@@ -1334,6 +1355,90 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') lbNav(1);
   if (e.key === 'ArrowLeft')  lbNav(-1);
 });
+</script>
+
+<div id="modal-veille" style="visibility:hidden;pointer-events:none;position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;padding:2rem;">
+  <div id="modal-bg" onclick="closeVeille()" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);opacity:0;transition:opacity 0.25s ease;cursor:zoom-out;"></div>
+  <div id="modal-box" style="position:relative;z-index:1;background:#ffffff;border:1px solid rgba(0,0,0,0.1);border-radius:10px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;padding:2.5rem;opacity:0;transform:translateY(24px) scale(0.97);transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
+    <button onclick="closeVeille()" style="position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;font-size:1.2rem;color:#5a6272;cursor:pointer;">✕</button>
+
+    <div style="display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.65rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);color:#dc2626;padding:0.25rem 0.75rem;border-radius:3px;letter-spacing:0.08em;margin-bottom:1rem;">
+      <span style="width:6px;height:6px;background:#dc2626;border-radius:50%;display:inline-block;animation:blink 1.5s infinite;"></span>
+      CVE-2026-31431 — Critique
+    </div>
+
+    <div style="font-size:1.3rem;font-weight:700;color:#1a1f2e;margin-bottom:0.3rem;letter-spacing:-0.02em;line-height:1.2;">Copy Fail — Escalade de privilèges QNAP</div>
+    <div style="font-size:0.82rem;color:#5a6272;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(0,0,0,0.09);">Vulnérabilité noyau Linux · Kernel 5.10 ARM64 · QTS (QNAP) · Mai 2026</div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">La faille</div>
+      <p style="font-size:0.85rem;color:#5a6272;line-height:1.8;margin-bottom:0.5rem;text-align:justify;"><strong style="color:#1a1f2e;">CVE-2026-31431</strong>, surnommée "Copy Fail", est une vulnérabilité critique d'<strong style="color:#1a1f2e;">escalade locale de privilèges (LPE)</strong> découverte début mai 2026. Elle affecte le noyau Linux et par extension les NAS QNAP sous architecture ARM64 tournant sur QTS avec le kernel 5.10.</p>
+      <p style="font-size:0.85rem;color:#5a6272;line-height:1.8;text-align:justify;">Un attaquant avec de simples droits utilisateur exploite un bug dans le sous-système cryptographique via les sockets <code style="font-family:var(--mono);font-size:0.82em">AF_ALG</code> et l'appel système <code style="font-family:var(--mono);font-size:0.82em">splice</code> pour corrompre en mémoire des fichiers critiques comme <code style="font-family:var(--mono);font-size:0.82em">/etc/passwd</code> et obtenir les droits root — sans trace sur le disque.</p>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">Pourquoi c'est important</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Furtivité absolue</strong> — modification en mémoire vive uniquement, contourne les antivirus et contrôles d'intégrité classiques.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Exploit public disponible</strong> — activement ciblée par des cybercriminels depuis sa publication.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Danger des conteneurs</strong> — Docker partage le même noyau que le NAS. Compromettre un conteneur suffit à prendre le contrôle total de l'hôte.</span></li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">Risques pour Kem One</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Vol de données</strong> — accès root = accès à tous les partages réseau, sauvegardes, documents RH et financiers.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Ransomware</strong> — chiffrement total des données à la racine, activité paralysée.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Rebond réseau</strong> — le NAS compromis sert de point d'entrée pour attaquer l'Active Directory et le reste de l'infrastructure.</span></li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">Solutions</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Audit d'éligibilité</strong> — vérifier l'architecture des NAS via QTS. Les modèles x86 ne sont pas impactés.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Mise à jour</strong> — appliquer le patch officiel QNAP dès sa sortie (avis QSA-26-16).</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Désactiver les services inutiles</strong> — couper le serveur web intégré s'il n'est pas utilisé.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Restreindre SSH/Telnet</strong> — aux seuls administrateurs, aucun utilisateur classique ne doit pouvoir exécuter un shell.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Isoler réseau</strong> — NAS derrière un pare-feu strict, jamais exposés directement sur internet.</span></li>
+      </ul>
+    </div>
+
+    <div style="background:rgba(37,99,235,0.05);border-left:3px solid #2563eb;padding:0.85rem 1rem;border-radius:0 4px 4px 0;font-size:0.82rem;color:#5a6272;line-height:1.75;font-style:italic;">
+      Cette veille m'a permis de comprendre l'importance de la sécurité des noyaux Linux dans le monde du stockage, et m'a poussé à auditer notre propre parc de NAS chez Kem One pour m'assurer que nos infrastructures de production ne sont pas exposées.
+    </div>
+  </div>
+</div>
+
+<script>
+function openVeille() {
+  const m = document.getElementById('modal-veille');
+  const box = document.getElementById('modal-box');
+  const bg = document.getElementById('modal-bg');
+  m.style.visibility = 'visible';
+  m.style.pointerEvents = 'all';
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    bg.style.opacity = '1';
+    box.style.opacity = '1';
+    box.style.transform = 'translateY(0) scale(1)';
+  }, 10);
+}
+function closeVeille() {
+  const m = document.getElementById('modal-veille');
+  const box = document.getElementById('modal-box');
+  const bg = document.getElementById('modal-bg');
+  bg.style.opacity = '0';
+  box.style.opacity = '0';
+  box.style.transform = 'translateY(16px) scale(0.97)';
+  setTimeout(() => {
+    m.style.visibility = 'hidden';
+    m.style.pointerEvents = 'none';
+    document.body.style.overflow = '';
+  }, 260);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVeille(); });
 </script>
 </body>
 </html>
