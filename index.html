@@ -773,6 +773,29 @@
       background: rgba(220,38,38,0.14);
       border-color: rgba(220,38,38,0.45);
     }
+
+    /* ── PROJETS CLIQUABLES, FOND CLAIR ── */
+    a.proj-card { text-decoration: none; color: inherit; cursor: pointer; }
+    .proj-link {
+      margin-top: auto;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-2);
+    }
+    a.proj-card:hover .proj-link { text-decoration: underline; }
+
+    .s-light .proj-card { background: #fff; border: 1px solid var(--border-l); }
+    .s-light .proj-card:hover { border-color: var(--blue-2); box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+    .s-light .proj-card h3 { color: var(--text-l); }
+    .s-light .proj-card p { color: var(--text-l2); }
+    .s-light .pt-alt { color: #16a34a; }
+    .s-light .pt-bts { color: var(--blue-2); }
+    .s-light .pt-perso { color: #ea580c; }
+    .s-light .chip-d { border-color: var(--border-l); color: var(--text-l2); }
+    .s-light .chip-d.hi { border-color: var(--blue-2); color: var(--blue-2); background: rgba(37,99,235,0.06); }
+    
 </style>
 </head>
 <body>
@@ -1085,8 +1108,11 @@
     <p class="s-tag">04 — Mes certifications</p>
     <h2 class="s-title">Là où j'en suis</h2>
 
-    <div class="proj-grid" style="grid-template-columns:repeat(2,1fr);">
-      <div class="proj-card reveal">
+    <div class="proj-card reveal" style="flex-direction:row;align-items:center;flex-wrap:wrap;gap:2rem;max-width:720px;">
+      <div style="background:#fff;border-radius:8px;padding:1rem;flex-shrink:0;width:150px;height:150px;display:flex;align-items:center;justify-content:center;">
+        <img src="logo-ccna.png" alt="Cisco CCNA" style="max-width:100%;max-height:100%;" onerror="this.style.display='none'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.75rem;flex:1;min-width:240px;">
         <span class="proj-type pt-perso">En préparation</span>
         <h3>Cisco CCNA</h3>
         <p>Réseaux : routage, commutation, VLAN, adressage IP. Entraînement sur Packet Tracer et sur mon homelab.</p>
@@ -1094,49 +1120,30 @@
           <span class="chip-d hi">Réseau</span><span class="chip-d">Packet Tracer</span>
         </div>
       </div>
-
-      <div class="proj-card reveal">
-        <span class="proj-type pt-perso">En préparation</span>
-        <h3>CompTIA Security+</h3>
-        <p>Fondamentaux de la cybersécurité : menaces, gestion des risques, sécurisation des systèmes et des réseaux.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Cybersécurité</span><span class="chip-d">Risques</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
   
 <!-- 04 — PROJETS -->
-<section class="s-dark0" id="projets">
+<section class="s-light" id="projets">
   <div class="section-inner">
     <p class="s-tag">05 — Mes projets</p>
     <h2 class="s-title">Réalisations</h2>
 
     <div class="proj-grid">
-      <div class="proj-card reveal">
+      <a class="proj-card reveal" href="procedure-gestion-it.pdf" target="_blank" rel="noopener">
         <span class="proj-type pt-alt">Alternance</span>
         <h3>Outil de gestion IT — Kem One</h3>
-        <p>Application Python / Streamlit avec authentification LDAP, gestion des OU Active Directory
+        <p>Application Python / Streamlit avec authentification LDAP / NTLM, gestion des OU Active Directory
         et inventaire matériel SQLite. Rebuildée ensuite en PowerShell Windows Forms.</p>
         <div class="proj-stack">
           <span class="chip-d hi">Python</span><span class="chip-d">Streamlit</span>
           <span class="chip-d">LDAP3</span><span class="chip-d">SQLite</span><span class="chip-d">PowerShell</span>
         </div>
-      </div>
+        <span class="proj-link">Voir la procédure →</span>
+      </a>
 
-      <div class="proj-card reveal" style="animation-delay:.07s">
-        <span class="proj-type pt-alt">Alternance</span>
-        <h3>Portail d'Onboarding Employé</h3>
-        <p>Application desktop Electron.js : splash animée, récupération automatique du username AD
-        via PowerShell, dashboard de bienvenue personnalisé.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Electron.js</span><span class="chip-d">Node.js</span>
-          <span class="chip-d">PowerShell</span><span class="chip-d">AD</span>
-        </div>
-      </div>
-
-      <div class="proj-card reveal" style="animation-delay:.14s">
+      <a class="proj-card reveal" style="animation-delay:.07s" href="procedure-nexus.pdf" target="_blank" rel="noopener">
         <span class="proj-type pt-bts">BTS</span>
         <h3>Infrastructure Serveur Nexus</h3>
         <p>Déploiement BIND9, Apache2 et Nginx sur LXC Proxmox. Domaine <span style="font-family:var(--mono);font-size:0.82em">troubleshooter.lan</span>,
@@ -1145,20 +1152,10 @@
           <span class="chip-d hi">Proxmox</span><span class="chip-d">Terraform</span>
           <span class="chip-d">Ansible</span><span class="chip-d">BIND9</span><span class="chip-d">Nginx</span>
         </div>
-      </div>
+        <span class="proj-link">Voir la procédure →</span>
+      </a>
 
-      <div class="proj-card reveal" style="animation-delay:.21s">
-        <span class="proj-type pt-bts">BTS</span>
-        <h3>Infrastructure GSB — Services IT</h3>
-        <p>AdGuard, Uptime Kuma et GLPI en LXC.
-        Règles DNAT iptables pour l'exposition des services.</p>
-        <div class="proj-stack">
-          <span class="chip-d">AdGuard</span><span class="chip-d">Uptime Kuma</span>
-          <span class="chip-d">GLPI</span><span class="chip-d hi">iptables</span><span class="chip-d">VLAN</span>
-        </div>
-      </div>
-
-      <div class="proj-card reveal" style="animation-delay:.28s">
+      <a class="proj-card reveal" style="animation-delay:.14s" href="procedure-homelab.pdf" target="_blank" rel="noopener">
         <span class="proj-type pt-perso">Homelab</span>
         <h3>Homelab Proxmox Personnel</h3>
         <p>Mini PC i5-8500 / 32 Go RAM. En production : OPNsense, Windows Server 2022 + AD,
@@ -1167,17 +1164,8 @@
           <span class="chip-d hi">Proxmox</span><span class="chip-d">OPNsense</span>
           <span class="chip-d">Zabbix</span><span class="chip-d">Ansible</span><span class="chip-d">WinServer 2022</span>
         </div>
-      </div>
-
-      <div class="proj-card reveal" style="animation-delay:.35s">
-        <span class="proj-type pt-perso">Personnel</span>
-        <h3>Site web pour club de sport</h3>
-        <p>En cours de reflexion, pas encore commencé...</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">HTML</span><span class="chip-d">Basketball</span>
-          <span class="chip-d">Proxmox</span>
-        </div>
-      </div>
+        <span class="proj-link">Voir la procédure →</span>
+      </a>
     </div>
   </div>
 </section>
