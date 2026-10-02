@@ -59,7 +59,7 @@
 
     .nav-links {
       list-style: none;
-      display: flex; gap: 2rem;
+      display: flex; gap: 1.4rem;
     }
 
     .nav-links a {
@@ -781,11 +781,14 @@
 <nav>
   <a href="#hero" class="nav-logo">Anthony · SISR</a>
   <ul class="nav-links">
-    <li><a href="#presentation">Présentation</a></li>
+    <li><a href="#hero">Accueil</a></li>
+    <li><a href="#presentation">À propos</a></li>
+    <li><a href="#bts-sio">BTS SIO</a></li>
     <li><a href="#entreprise">Entreprise</a></li>
-    <li><a href="#taches">Tâches</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#projets">Projets</a></li>
-    <li><a href="#veille">Veille</a></li>
+    <li><a href="#tcs">TCS</a></li>
+    <li><a href="#veille">Veilles</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -827,7 +830,7 @@
 <!-- 01 — PRÉSENTATION -->
 <section class="s-light" id="presentation">
   <div class="section-inner">
-    <p class="s-tag">01 — Présentation personnelle</p>
+    <p class="s-tag">01 — À propos de moi</p>
     <h2 class="s-title">Qui suis-je ?</h2>
 
     <div class="perso-grid">
@@ -892,12 +895,54 @@
   </div>
 </section>
 
+<!-- 02 — BTS SIO -->
+<section class="s-dark" id="bts-sio">
+  <div class="section-inner">
+    <p class="s-tag">02 — BTS SIO</p>
+    <h2 class="s-title">Ma formation</h2>
+    <p style="font-size:.97rem;color:var(--text-d2);line-height:1.85;max-width:640px;margin-bottom:2.5rem;">
+      BTS Services Informatiques aux Organisations, option SISR (Solutions d'Infrastructure,
+      Systèmes et Réseaux), préparé en alternance à M2S Formation (Vitrolles) et chez Kem One.
+      La formation s'organise autour de trois blocs de compétences.
+    </p>
+
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <span class="proj-type pt-bts">Bloc 1</span>
+        <h3>Support et mise à disposition de services informatiques</h3>
+        <p>Gérer le patrimoine informatique, répondre aux incidents et aux demandes, travailler en mode projet.</p>
+        <div class="proj-stack">
+          <span class="chip-d hi">GLPI</span><span class="chip-d">Helpdesk</span><span class="chip-d">Postes</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="proj-type pt-bts">Bloc 2</span>
+        <h3>Administration des systèmes et des réseaux</h3>
+        <p>Installer, configurer et superviser les serveurs, les services et les équipements réseau.</p>
+        <div class="proj-stack">
+          <span class="chip-d hi">Active Directory</span><span class="chip-d">Proxmox</span><span class="chip-d">VLAN</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="proj-type pt-bts">Bloc 3</span>
+        <h3>Cybersécurité des services informatiques</h3>
+        <p>Protéger les données et les accès, appliquer les bonnes pratiques et anticiper les menaces.</p>
+        <div class="proj-stack">
+          <span class="chip-d hi">GPO</span><span class="chip-d">Veille CVE</span><span class="chip-d">Pare-feu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- 02 — ENTREPRISE -->
 <section class="s-dark" id="entreprise" style="position:relative; background-image:url('https://gomet.net/wp-content/uploads/2021/06/kem-one-fos9822_-e1624035968816-750x375.jpg'); background-size:cover; background-position:center;">
   <div style="position:absolute;inset:0;background:rgba(10,15,25,0.82);z-index:0;"></div>
   <div class="section-inner">
     <div class="inner" style="position:relative;z-index:1;">
-    <p class="s-tag">02 — Entreprise</p>
+    <p class="s-tag">03 — Entreprise</p>
     <h2 class="s-title">Kem One</h2>
 
     <div class="ent-grid">
@@ -938,7 +983,7 @@
 <!-- 03 — TÂCHES -->
 <section class="s-light" id="taches">
   <div class="section-inner">
-    <p class="s-tag">03 — Tâches en entreprise</p>
+    <p class="s-tag">03 — Tâches au quotidien</p>
     <h2 class="s-title">Ce que je fais au quotidien</h2>
 
     <div class="taches-wrap reveal">
@@ -1034,10 +1079,38 @@
   </div>
 </section>
 
+<!-- 04 — CERTIFICATIONS -->
+<section class="s-dark" id="certifications">
+  <div class="section-inner">
+    <p class="s-tag">04 — Mes certifications</p>
+    <h2 class="s-title">Là où j'en suis</h2>
+
+    <div class="proj-grid" style="grid-template-columns:repeat(2,1fr);">
+      <div class="proj-card reveal">
+        <span class="proj-type pt-perso">En préparation</span>
+        <h3>Cisco CCNA</h3>
+        <p>Réseaux : routage, commutation, VLAN, adressage IP. Entraînement sur Packet Tracer et sur mon homelab.</p>
+        <div class="proj-stack">
+          <span class="chip-d hi">Réseau</span><span class="chip-d">Packet Tracer</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="proj-type pt-perso">En préparation</span>
+        <h3>CompTIA Security+</h3>
+        <p>Fondamentaux de la cybersécurité : menaces, gestion des risques, sécurisation des systèmes et des réseaux.</p>
+        <div class="proj-stack">
+          <span class="chip-d hi">Cybersécurité</span><span class="chip-d">Risques</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- 04 — PROJETS -->
 <section class="s-dark0" id="projets">
   <div class="section-inner">
-    <p class="s-tag">04 — Projets</p>
+    <p class="s-tag">05 — Mes projets</p>
     <h2 class="s-title">Réalisations</h2>
 
     <div class="proj-grid">
@@ -1109,10 +1182,26 @@
   </div>
 </section>
 
+<!-- 06 — TCS -->
+<section class="s-dark" id="tcs">
+  <div class="section-inner">
+    <p class="s-tag">06 — TCS</p>
+    <h2 class="s-title">Tableau de compétences</h2>
+    <p style="font-size:.97rem;color:var(--text-d2);line-height:1.85;max-width:640px;margin-bottom:2rem;">
+      Mon tableau de compétences regroupe les situations professionnelles vécues en entreprise
+      et en formation, rattachées aux compétences du référentiel du BTS SIO.
+    </p>
+    <div class="hero-actions">
+      <a href="tableau-competences.pdf" target="_blank" rel="noopener" class="btn btn-blue">Afficher le PDF</a>
+      <a href="tableau-competences.pdf" download class="btn btn-ghost-d">Télécharger</a>
+    </div>
+  </div>
+</section>
+  
 <!-- 05 — VEILLE -->
 <section class="s-light" id="veille">
   <div class="section-inner">
-    <p class="s-tag">05 — Veille technologique</p>
+    <p class="s-tag">07 — Veille technologique</p>
     <h2 class="s-title">Rester à jour</h2>
 
     <p class="veille-lead reveal">
