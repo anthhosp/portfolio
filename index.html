@@ -872,6 +872,49 @@
       .zz { grid-template-columns: 1fr; gap: 1.5rem; }
       .zz.rev .zz-img { order: 0; }
     }
+    /* ── BTS SIO INTERACTIF ── */
+    .lab { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 1rem; }
+    .lab-hint { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-l2); margin-bottom: 0.5rem; }
+    .lab-map svg { width: 100%; height: auto; display: block; }
+
+    .lk { stroke: #c5cfe3; stroke-width: 1.6; stroke-dasharray: 6 6; animation: flow 1.2s linear infinite; transition: stroke 0.3s; }
+    .lk.on { stroke: var(--blue-2); stroke-width: 2.2; }
+    @keyframes flow { to { stroke-dashoffset: -12; } }
+    .pk { fill: var(--blue-2); }
+
+    .core circle { fill: var(--text-l); }
+    .core text { fill: #fff; font-family: var(--ff); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; }
+
+    .nd { cursor: pointer; outline: none; }
+    .nd .body { fill: #fff; stroke: #c5cfe3; stroke-width: 2; transition: all 0.3s; }
+    .nd:hover .body, .nd:focus-visible .body { stroke: var(--blue-2); }
+    .nd.on .body { fill: var(--blue-2); stroke: var(--blue-2); }
+    .nd .num { font-family: var(--ff); font-size: 24px; font-weight: 800; fill: var(--blue-2); pointer-events: none; transition: fill 0.3s; }
+    .nd .lbl { font-family: var(--ff); font-size: 10px; font-weight: 600; fill: var(--text-l2); pointer-events: none; transition: fill 0.3s; }
+    .nd.on .num, .nd.on .lbl { fill: #fff; }
+    .pulse { fill: none; stroke: var(--blue-2); opacity: 0; transform-box: fill-box; transform-origin: center; animation: ring 2.4s ease-out infinite; }
+    .lab.touched .pulse { display: none; }
+    @keyframes ring { 0% { opacity: 0.5; transform: scale(1); } 100% { opacity: 0; transform: scale(1.5); } }
+
+    .lab-panel { border-left: 3px solid var(--blue-2); padding-left: 2rem; min-height: 340px; }
+    .lab-panel.swap { animation: swapIn 0.35s ease; }
+    @keyframes swapIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+    .lp-k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-2); }
+    .lab-panel h3 { font-size: 1.35rem; font-weight: 700; color: var(--text-l); line-height: 1.3; margin: 0.5rem 0; }
+    .lp-def { font-size: 0.9rem; color: var(--text-l2); line-height: 1.7; }
+    .lp-toggle { display: inline-flex; background: #e9edf4; border-radius: 999px; padding: 3px; margin: 1.25rem 0 1rem; }
+    .lp-toggle button { border: none; background: none; font-family: var(--ff); font-size: 0.78rem; font-weight: 600; color: var(--text-l2); padding: 0.45rem 1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
+    .lp-toggle button.on { background: var(--blue-2); color: #fff; }
+    .lp-text { font-size: 0.92rem; color: var(--text-l2); line-height: 1.8; }
+    .lp-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
+    .lp-chip { font-family: var(--mono); font-size: 0.62rem; padding: 0.25rem 0.6rem; border: 1px solid var(--blue-2); color: var(--blue-2); border-radius: 3px; background: rgba(37,99,235,0.06); opacity: 0; animation: pop 0.35s ease forwards; }
+    @keyframes pop { from { opacity: 0; transform: translateY(6px) scale(0.9); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 900px) {
+      .lab { grid-template-columns: 1fr; gap: 2rem; }
+      .lab-panel { min-height: 0; }
+    }
+
     
 </style>
 </head>
@@ -1022,35 +1065,57 @@
       </div>
     </div>
 
-    <div class="bts-cols reveal">
-      <div class="bts-col">
-        <span class="bts-col-k">Bloc 1</span>
-        <h3>Support et mise à disposition de services informatiques</h3>
-        <p class="bts-col-def">Gérer le parc, répondre aux incidents et aux demandes des utilisateurs.</p>
-        <div class="bts-col-sub">À l'école</div>
-        <p class="t">Déploiement de GLPI en conteneur LXC pour gérer le parc et les tickets, dans le projet GSB.</p>
-        <div class="bts-col-sub">En entreprise</div>
-        <p class="t">Helpdesk N1 chez Kem One : diagnostic, dépannage des postes, escalade au N2 et suivi des tickets dans GLPI.</p>
+    <div class="lab reveal" id="lab">
+      <div class="lab-map">
+        <p class="lab-hint">Clique sur un bloc</p>
+        <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+          <line class="lk on" data-bloc="1" x1="260" y1="170" x2="90"  y2="170"/>
+          <line class="lk"    data-bloc="2" x1="260" y1="170" x2="430" y2="80"/>
+          <line class="lk"    data-bloc="3" x1="260" y1="170" x2="430" y2="260"/>
+
+          <circle class="pk" r="3.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M260,170 L90,170"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="3.1s" begin="0.9s" repeatCount="indefinite" path="M90,170 L260,170"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="2.8s" begin="0.4s" repeatCount="indefinite" path="M260,170 L430,80"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="3.3s" begin="1.3s" repeatCount="indefinite" path="M430,80 L260,170"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="3s" begin="0.7s" repeatCount="indefinite" path="M260,170 L430,260"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="2.7s" begin="1.6s" repeatCount="indefinite" path="M430,260 L260,170"/></circle>
+
+          <g class="core">
+            <circle cx="260" cy="170" r="36"/>
+            <text x="260" y="175" text-anchor="middle">SISR</text>
+          </g>
+
+          <g class="nd on" data-bloc="1" tabindex="0" role="button" aria-label="Bloc 1 : Support">
+            <circle class="pulse" cx="90" cy="170" r="46"/>
+            <circle class="body"  cx="90" cy="170" r="46"/>
+            <text class="num" x="90" y="168" text-anchor="middle">1</text>
+            <text class="lbl" x="90" y="190" text-anchor="middle">Support</text>
+          </g>
+          <g class="nd" data-bloc="2" tabindex="0" role="button" aria-label="Bloc 2 : Administration">
+            <circle class="pulse" cx="430" cy="80" r="46"/>
+            <circle class="body"  cx="430" cy="80" r="46"/>
+            <text class="num" x="430" y="78" text-anchor="middle">2</text>
+            <text class="lbl" x="430" y="100" text-anchor="middle">Admin.</text>
+          </g>
+          <g class="nd" data-bloc="3" tabindex="0" role="button" aria-label="Bloc 3 : Cybersécurité">
+            <circle class="pulse" cx="430" cy="260" r="46"/>
+            <circle class="body"  cx="430" cy="260" r="46"/>
+            <text class="num" x="430" y="258" text-anchor="middle">3</text>
+            <text class="lbl" x="430" y="280" text-anchor="middle">Cyber</text>
+          </g>
+        </svg>
       </div>
 
-      <div class="bts-col">
-        <span class="bts-col-k">Bloc 2</span>
-        <h3>Administration des systèmes et des réseaux</h3>
-        <p class="bts-col-def">Installer, configurer et superviser les serveurs, les services et le réseau.</p>
-        <div class="bts-col-sub">À l'école</div>
-        <p class="t">Serveurs DNS, web et reverse proxy (BIND9, Apache2, Nginx) sur Proxmox avec Terraform et Ansible, puis VLAN et règles iptables. Chez moi, un homelab Proxmox pour pratiquer en continu.</p>
-        <div class="bts-col-sub">En entreprise</div>
-        <p class="t">Active Directory : comptes, groupes de sécurité, GPO. Et un outil interne d'inventaire AD et de stock matériel.</p>
-      </div>
-
-      <div class="bts-col">
-        <span class="bts-col-k">Bloc 3</span>
-        <h3>Cybersécurité des services informatiques</h3>
-        <p class="bts-col-def">Protéger les données et les accès, et anticiper les menaces.</p>
-        <div class="bts-col-sub">À l'école</div>
-        <p class="t">Segmentation réseau et pare-feu (VLAN, iptables, OPNsense sur mon homelab), et veille sur les CVE critiques.</p>
-        <div class="bts-col-sub">En entreprise</div>
-        <p class="t">Droits d'accès via l'AD, vie derrière un proxy SSL d'entreprise, et veille ciblée sur les failles qui touchent nos équipements, comme les NAS QNAP.</p>
+      <div class="lab-panel" id="labPanel">
+        <div class="lp-k" id="lpK"></div>
+        <h3 id="lpT"></h3>
+        <p class="lp-def" id="lpDef"></p>
+        <div class="lp-toggle">
+          <button type="button" class="on" data-side="school">À l'école</button>
+          <button type="button" data-side="work">En entreprise</button>
+        </div>
+        <p class="lp-text" id="lpText"></p>
+        <div class="lp-chips" id="lpChips"></div>
       </div>
     </div>
   </div>
@@ -1656,5 +1721,89 @@ function closeVeille() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVeille(); });
 </script>
+
+<script>
+(function () {
+  var DATA = {
+    1: {
+      t: "Support et mise à disposition de services informatiques",
+      def: "Que les utilisateurs puissent bosser sans accroc, et réparer vite quand quelque chose casse.",
+      school: "J'ai monté GLPI dans un conteneur LXC pour gérer un parc et des tickets de bout en bout, dans le projet GSB.",
+      work: "Au helpdesk de Kem One, je prends les incidents : un poste qui ne démarre plus, une imprimante en rade. Je diagnostique, je règle ou j'escalade au N2, et tout est tracé dans GLPI.",
+      chips: {
+        school: ["GLPI", "LXC", "Projet GSB"],
+        work: ["Helpdesk N1", "GLPI", "Windows 10/11", "Escalade N2"]
+      }
+    },
+    2: {
+      t: "Administration des systèmes et des réseaux",
+      def: "Installer, configurer, surveiller : faire tourner les serveurs et le réseau.",
+      school: "Je déploie des services (DNS avec BIND9, Apache2, Nginx en reverse proxy) sur Proxmox avec Terraform et Ansible, puis je cloisonne avec des VLAN et des règles iptables. Chez moi, le homelab prolonge tout ça en continu.",
+      work: "Sur l'Active Directory de Kem One, je gère les comptes, les groupes de sécurité et les GPO. J'ai aussi développé un outil interne d'inventaire AD et de stock matériel.",
+      chips: {
+        school: ["Proxmox", "Terraform", "Ansible", "BIND9", "Nginx", "VLAN"],
+        work: ["Active Directory", "GPO", "Groupes de sécurité", "Outil interne"]
+      }
+    },
+    3: {
+      t: "Cybersécurité des services informatiques",
+      def: "Protéger les accès et les données, et anticiper les menaces plutôt que les subir.",
+      school: "On apprend à segmenter le réseau et à filtrer : VLAN, iptables, et OPNsense sur mon homelab. Et je suis les CVE critiques dans ma veille technologique.",
+      work: "Les droits passent par l'AD, le trafic traverse un proxy SSL d'entreprise, et ma veille cible les failles qui touchent nos équipements, comme celle des NAS QNAP.",
+      chips: {
+        school: ["VLAN", "iptables", "OPNsense", "Veille CVE"],
+        work: ["Droits AD", "Proxy SSL", "Veille QNAP"]
+      }
+    }
+  };
+
+  var lab = document.getElementById("lab");
+  if (!lab) return;
+  var panel = document.getElementById("labPanel");
+  var nodes = lab.querySelectorAll(".nd");
+  var links = lab.querySelectorAll(".lk");
+  var tgl = lab.querySelectorAll(".lp-toggle button");
+  var cur = 1, side = "school", timer;
+
+  function render(animate) {
+    var d = DATA[cur];
+    document.getElementById("lpK").textContent = "Bloc " + cur;
+    document.getElementById("lpT").textContent = d.t;
+    document.getElementById("lpDef").textContent = d.def;
+    document.getElementById("lpText").textContent = d[side];
+    document.getElementById("lpChips").innerHTML = d.chips[side].map(function (c, i) {
+      return '<span class="lp-chip" style="animation-delay:' + (i * 70) + 'ms">' + c + "</span>";
+    }).join("");
+    nodes.forEach(function (n) { n.classList.toggle("on", +n.dataset.bloc === cur); });
+    links.forEach(function (l) { l.classList.toggle("on", +l.dataset.bloc === cur); });
+    tgl.forEach(function (b) { b.classList.toggle("on", b.dataset.side === side); });
+    if (animate) {
+      panel.classList.remove("swap");
+      void panel.offsetWidth;
+      panel.classList.add("swap");
+    }
+  }
+
+  function stop() { clearInterval(timer); lab.classList.add("touched"); }
+
+  nodes.forEach(function (n) {
+    function pick() { stop(); cur = +n.dataset.bloc; render(true); }
+    n.addEventListener("click", pick);
+    n.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); }
+    });
+  });
+
+  tgl.forEach(function (b) {
+    b.addEventListener("click", function () { stop(); side = b.dataset.side; render(true); });
+  });
+
+  lab.addEventListener("mouseenter", stop);
+
+  render(false);
+  timer = setInterval(function () { cur = (cur % 3) + 1; render(true); }, 7000);
+})();
+</script>
+  
 </body>
 </html>
