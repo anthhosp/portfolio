@@ -795,6 +795,51 @@
     .s-light .pt-perso { color: #ea580c; }
     .s-light .chip-d { border-color: var(--border-l); color: var(--text-l2); }
     .s-light .chip-d.hi { border-color: var(--blue-2); color: var(--blue-2); background: rgba(37,99,235,0.06); }
+
+    /* ── BTS SIO ── */
+    .bts-intro { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; }
+    .bts-lead { font-size: 1.15rem; line-height: 1.8; color: var(--text-l2); }
+    .bts-lead strong { color: var(--text-l); font-weight: 600; }
+    .bts-facts { display: flex; gap: 2.5rem; margin-top: 1.75rem; }
+    .bts-fact b { display: block; font-size: 2rem; font-weight: 900; color: var(--blue-2); line-height: 1; }
+    .bts-fact span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-l2); }
+    .bts-photo { height: 260px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border-l); background: var(--light); }
+    .bts-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .bloc { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid var(--border-l); }
+    .bloc-n { font-size: 3rem; font-weight: 900; color: #d1d8e8; line-height: 1; }
+    .bloc h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-l); }
+    .bloc-def { font-size: 0.85rem; color: var(--text-l2); margin: 0.25rem 0 1rem; }
+    .bloc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .bloc-k { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-2); }
+    .bloc-cols p { font-size: 0.85rem; color: var(--text-l2); line-height: 1.75; margin-top: 0.35rem; }
+
+    /* ── PROJETS EN LIGNES ── */
+    .projet { display: grid; grid-template-columns: 70px 1fr 260px; gap: 2rem; align-items: center; padding: 2rem 0; border-bottom: 1px solid var(--border-l); text-decoration: none; color: inherit; transition: background 0.2s; }
+    .projet:first-child { border-top: 1px solid var(--border-l); }
+    .projet:hover { background: rgba(37,99,235,0.03); }
+    .projet-n { font-size: 2.6rem; font-weight: 900; color: #d1d8e8; line-height: 1; transition: color 0.2s; }
+    .projet:hover .projet-n { color: var(--blue-2); }
+    .projet-kind { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 0.4rem; }
+    .projet h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-l); margin-bottom: 0.4rem; }
+    .projet p { font-size: 0.85rem; color: var(--text-l2); line-height: 1.75; max-width: 560px; }
+    .projet-stack { font-family: var(--mono); font-size: 0.65rem; color: var(--text-l2); margin-top: 0.7rem; }
+    .projet-link { display: inline-block; margin-top: 0.8rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-2); }
+    .projet:hover .projet-link { text-decoration: underline; }
+    .projet-img { height: 150px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border-l); background: var(--light); }
+    .projet-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.8); transition: filter 0.2s, transform 0.4s; }
+    .projet:hover .projet-img img { filter: saturate(1); transform: scale(1.03); }
+
+    @media (max-width: 900px) {
+      .bts-intro, .bloc-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+      .bloc { grid-template-columns: 44px 1fr; }
+      .bts-photo { height: 200px; }
+      .projet { grid-template-columns: 44px 1fr; }
+      .projet-img { display: none; }
+    }
+
+
+
     
 </style>
 </head>
@@ -918,47 +963,73 @@
   </div>
 </section>
 
+
 <!-- 02 — BTS SIO -->
-<section class="s-dark" id="bts-sio">
+<section class="s-light" id="bts-sio" style="background:#fff;">
   <div class="section-inner">
     <p class="s-tag">02 — BTS SIO</p>
     <h2 class="s-title">Ma formation</h2>
-    <p style="font-size:.97rem;color:var(--text-d2);line-height:1.85;max-width:640px;margin-bottom:2.5rem;">
-      BTS Services Informatiques aux Organisations, option SISR (Solutions d'Infrastructure,
-      Systèmes et Réseaux), préparé en alternance à M2S Formation (Vitrolles) et chez Kem One.
-      La formation s'organise autour de trois blocs de compétences.
-    </p>
 
-    <div class="proj-grid">
-      <div class="proj-card reveal">
-        <span class="proj-type pt-bts">Bloc 1</span>
-        <h3>Support et mise à disposition de services informatiques</h3>
-        <p>Gérer le patrimoine informatique, répondre aux incidents et aux demandes, travailler en mode projet.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">GLPI</span><span class="chip-d">Helpdesk</span><span class="chip-d">Postes</span>
+    <div class="bts-intro reveal">
+      <div>
+        <p class="bts-lead">
+          Le BTS SIO, c'est deux ans pour apprendre à faire tourner l'informatique d'une organisation.
+          Je suis l'option <strong>SISR</strong> : serveurs, réseaux, sécurité. Je le prépare en alternance,
+          entre <strong>M2S Formation</strong> à Vitrolles et la DSI de <strong>Kem One</strong> à Fos-sur-Mer,
+          donc ce que je vois en cours, je le recroise en entreprise.
+        </p>
+        <div class="bts-facts">
+          <div class="bts-fact"><b>2</b><span>ans en alternance</span></div>
+          <div class="bts-fact"><b>3</b><span>blocs de compétences</span></div>
+          <div class="bts-fact"><b>1</b><span>option : SISR</span></div>
+        </div>
+      </div>
+      <!-- REMPLACE bts-photo.jpg PAR UNE CAPTURE DE TON PROXMOX OU UNE PHOTO DE TA PROMO -->
+      <div class="bts-photo">
+        <img src="bts-photo.jpg" alt="" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="bloc">
+        <div class="bloc-n">1</div>
+        <div>
+          <h3>Support et mise à disposition de services informatiques</h3>
+          <p class="bloc-def">Gérer le parc, répondre aux incidents et aux demandes des utilisateurs.</p>
+          <div class="bloc-cols">
+            <div><span class="bloc-k">À l'école</span><p>Déploiement de GLPI en conteneur LXC pour gérer le parc et les tickets, dans le projet GSB.</p></div>
+            <div><span class="bloc-k">En entreprise</span><p>Helpdesk N1 chez Kem One : diagnostic, dépannage des postes, escalade au N2 et suivi des tickets dans GLPI.</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="proj-card reveal">
-        <span class="proj-type pt-bts">Bloc 2</span>
-        <h3>Administration des systèmes et des réseaux</h3>
-        <p>Installer, configurer et superviser les serveurs, les services et les équipements réseau.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Active Directory</span><span class="chip-d">Proxmox</span><span class="chip-d">VLAN</span>
+      <div class="bloc">
+        <div class="bloc-n">2</div>
+        <div>
+          <h3>Administration des systèmes et des réseaux</h3>
+          <p class="bloc-def">Installer, configurer et superviser les serveurs, les services et le réseau.</p>
+          <div class="bloc-cols">
+            <div><span class="bloc-k">À l'école</span><p>Serveurs DNS, web et reverse proxy (BIND9, Apache2, Nginx) sur Proxmox avec Terraform et Ansible, puis VLAN et règles iptables. Chez moi, un homelab Proxmox pour pratiquer en continu.</p></div>
+            <div><span class="bloc-k">En entreprise</span><p>Active Directory : comptes, groupes de sécurité, GPO. Et un outil interne d'inventaire AD et de stock matériel.</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="proj-card reveal">
-        <span class="proj-type pt-bts">Bloc 3</span>
-        <h3>Cybersécurité des services informatiques</h3>
-        <p>Protéger les données et les accès, appliquer les bonnes pratiques et anticiper les menaces.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">GPO</span><span class="chip-d">Veille CVE</span><span class="chip-d">Pare-feu</span>
+      <div class="bloc">
+        <div class="bloc-n">3</div>
+        <div>
+          <h3>Cybersécurité des services informatiques</h3>
+          <p class="bloc-def">Protéger les données et les accès, et anticiper les menaces.</p>
+          <div class="bloc-cols">
+            <div><span class="bloc-k">À l'école</span><p>Segmentation réseau et pare-feu (VLAN, iptables, OPNsense sur mon homelab), et veille sur les CVE critiques.</p></div>
+            <div><span class="bloc-k">En entreprise</span><p>Droits d'accès via l'AD, vie derrière un proxy SSL d'entreprise, et veille ciblée sur les failles qui touchent nos équipements, comme les NAS QNAP.</p></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+  
   
 <!-- 02 — ENTREPRISE -->
 <section class="s-dark" id="entreprise" style="position:relative; background-image:url('https://gomet.net/wp-content/uploads/2021/06/kem-one-fos9822_-e1624035968816-750x375.jpg'); background-size:cover; background-position:center;">
@@ -1108,17 +1179,14 @@
     <p class="s-tag">04 — Mes certifications</p>
     <h2 class="s-title">Là où j'en suis</h2>
 
-    <div class="proj-card reveal" style="flex-direction:row;align-items:center;flex-wrap:wrap;gap:2rem;max-width:720px;">
+    <div class="reveal" style="display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;">
       <div style="background:#fff;border-radius:8px;padding:1rem;flex-shrink:0;width:150px;height:150px;display:flex;align-items:center;justify-content:center;">
         <img src="logo-ccna.png" alt="Cisco CCNA" style="max-width:100%;max-height:100%;" onerror="this.style.display='none'">
       </div>
-      <div style="display:flex;flex-direction:column;gap:.75rem;flex:1;min-width:240px;">
-        <span class="proj-type pt-perso">En préparation</span>
-        <h3>Cisco CCNA</h3>
-        <p>Réseaux : routage, commutation, VLAN, adressage IP. Entraînement sur Packet Tracer et sur mon homelab.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Réseau</span><span class="chip-d">Packet Tracer</span>
-        </div>
+      <div style="max-width:520px;">
+        <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#fb923c;margin-bottom:0.5rem;">En préparation</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--text-d);margin-bottom:0.6rem;">Cisco CCNA</h3>
+        <p style="font-size:0.92rem;color:var(--text-d2);line-height:1.8;">Réseaux : routage, commutation, VLAN, adressage IP. Entraînement sur Packet Tracer et sur mon homelab.</p>
       </div>
     </div>
   </div>
@@ -1130,41 +1198,44 @@
     <p class="s-tag">05 — Mes projets</p>
     <h2 class="s-title">Réalisations</h2>
 
-    <div class="proj-grid">
-      <a class="proj-card reveal" href="procedure-gestion-it.pdf" target="_blank" rel="noopener">
-        <span class="proj-type pt-alt">Alternance</span>
-        <h3>Outil de gestion IT — Kem One</h3>
-        <p>Application Python / Streamlit avec authentification LDAP / NTLM, gestion des OU Active Directory
-        et inventaire matériel SQLite. Rebuildée ensuite en PowerShell Windows Forms.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Python</span><span class="chip-d">Streamlit</span>
-          <span class="chip-d">LDAP3</span><span class="chip-d">SQLite</span><span class="chip-d">PowerShell</span>
+    <div class="reveal">
+      <a class="projet" href="procedure-gestion-it.pdf" target="_blank" rel="noopener">
+        <div class="projet-n">01</div>
+        <div>
+          <div class="projet-kind">Alternance · Kem One</div>
+          <h3>Outil de gestion IT</h3>
+          <p>Application Python / Streamlit avec authentification LDAP / NTLM, gestion des OU Active Directory
+          et inventaire matériel SQLite. Rebuildée ensuite en PowerShell Windows Forms.</p>
+          <div class="projet-stack">Python · Streamlit · LDAP3 · SQLite · PowerShell</div>
+          <span class="projet-link">Voir la procédure →</span>
         </div>
-        <span class="proj-link">Voir la procédure →</span>
+        <div class="projet-img"><img src="capture-gestion-it.png" alt="" onerror="this.parentElement.style.display='none'"></div>
       </a>
 
-      <a class="proj-card reveal" style="animation-delay:.07s" href="procedure-nexus.pdf" target="_blank" rel="noopener">
-        <span class="proj-type pt-bts">BTS</span>
-        <h3>Infrastructure Serveur Nexus</h3>
-        <p>Déploiement BIND9, Apache2 et Nginx sur LXC Proxmox. Domaine <span style="font-family:var(--mono);font-size:0.82em">troubleshooter.lan</span>,
-        provisionné via Terraform et Ansible.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Proxmox</span><span class="chip-d">Terraform</span>
-          <span class="chip-d">Ansible</span><span class="chip-d">BIND9</span><span class="chip-d">Nginx</span>
+      <a class="projet" href="procedure-nexus.pdf" target="_blank" rel="noopener">
+        <div class="projet-n">02</div>
+        <div>
+          <div class="projet-kind">BTS · École</div>
+          <h3>Infrastructure Serveur Nexus</h3>
+          <p>Déploiement BIND9, Apache2 et Nginx sur LXC Proxmox. Domaine <span style="font-family:var(--mono);font-size:0.82em">troubleshooter.lan</span>,
+          provisionné via Terraform et Ansible.</p>
+          <div class="projet-stack">Proxmox · Terraform · Ansible · BIND9 · Nginx</div>
+          <span class="projet-link">Voir la procédure →</span>
         </div>
-        <span class="proj-link">Voir la procédure →</span>
+        <div class="projet-img"><img src="capture-nexus.png" alt="" onerror="this.parentElement.style.display='none'"></div>
       </a>
 
-      <a class="proj-card reveal" style="animation-delay:.14s" href="procedure-homelab.pdf" target="_blank" rel="noopener">
-        <span class="proj-type pt-perso">Homelab</span>
-        <h3>Homelab Proxmox Personnel</h3>
-        <p>Mini PC i5-8500 / 32 Go RAM. En production : OPNsense, Windows Server 2022 + AD,
-        AdGuard, GLPI, Zabbix, Ansible, Uptime Kuma et un serveur Minecraft Forge 1.20.1.</p>
-        <div class="proj-stack">
-          <span class="chip-d hi">Proxmox</span><span class="chip-d">OPNsense</span>
-          <span class="chip-d">Zabbix</span><span class="chip-d">Ansible</span><span class="chip-d">WinServer 2022</span>
+      <a class="projet" href="procedure-homelab.pdf" target="_blank" rel="noopener">
+        <div class="projet-n">03</div>
+        <div>
+          <div class="projet-kind">Homelab · Perso</div>
+          <h3>Homelab Proxmox</h3>
+          <p>Mini PC i5-8500 / 32 Go RAM. En production : OPNsense, Windows Server 2022 + AD,
+          AdGuard, GLPI, Zabbix, Ansible, Uptime Kuma et un serveur Minecraft Forge 1.20.1.</p>
+          <div class="projet-stack">Proxmox · OPNsense · Zabbix · Ansible · WinServer 2022</div>
+          <span class="projet-link">Voir la procédure →</span>
         </div>
-        <span class="proj-link">Voir la procédure →</span>
+        <div class="projet-img"><img src="capture-homelab.png" alt="" onerror="this.parentElement.style.display='none'"></div>
       </a>
     </div>
   </div>
