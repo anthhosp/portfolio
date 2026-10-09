@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille juridique — Anthony</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Anthony · SISR</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="bts-sio.html">BTS SIO</a></li>
+    <li><a href="entreprise.html">Entreprise</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li class="has-sub">
+      <a href="projets.html">Projets</a>
+      <ul class="sub">
+        <li><a href="procedures.html">Toutes mes procédures</a></li>
+        <li><a href="projets-e5.html">Projets E5</a></li>
+        <li><a href="projets-e6.html">Projets E6</a></li>
+      </ul>
+    </li>
+    <li><a href="tcs.html">TCS</a></li>
+    <li class="has-sub">
+      <a href="veille-technologique.html" class="active">Veilles</a>
+      <ul class="sub">
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+        <li><a href="veille-juridique.html">Veille juridique</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</nav>
+
+<main>
+<section class="s-light" id="veille-juridique">
+  <div class="section-inner">
+    <p class="s-tag">07 — Veille juridique</p>
+    <h2 class="s-title">Le cadre juridique</h2>
+
+    <p class="veille-lead reveal">
+      Côté juridique, je suis les textes qui encadrent ce que je manipule au quotidien :
+      les données des utilisateurs et la cybersécurité des entreprises.
+    </p>
+
+    <div class="veille-grid reveal">
+      <div class="v-card">
+        <h3>RGPD</h3>
+        <p>Le règlement européen encadre la collecte et le traitement des données personnelles. En entreprise, il touche directement le support : comptes utilisateurs, annuaire, sauvegardes, accès aux fichiers.</p>
+        <ul class="v-list">
+          <li>Minimisation et durée de conservation</li>
+          <li>Droits des personnes : accès, effacement</li>
+          <li>Violation de données : notification à la CNIL sous 72 h</li>
+          <li>Sanctions jusqu'à 4 % du chiffre d'affaires mondial</li>
+        </ul>
+      </div>
+
+      <div class="v-card">
+        <h3>Directive NIS2</h3>
+        <p>La directive européenne renforce les obligations de cybersécurité des entreprises de secteurs critiques. Le secteur de la chimie est visé, donc le sujet se pose pour une entreprise comme Kem One. Je suis l'avancement de sa transposition en France.</p>
+        <ul class="v-list">
+          <li>Gestion des risques cyber</li>
+          <li>Notification des incidents significatifs</li>
+          <li>Responsabilité de la direction</li>
+          <li>Sanctions en cas de manquement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sources-block reveal">
+      <h4>Sources</h4>
+      <div class="sources-pills">
+        <span class="src-pill">CNIL</span>
+        <span class="src-pill">ANSSI</span>
+        <span class="src-pill">Légifrance</span>
+        <span class="src-pill">EUR-Lex</span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Anthony — BTS SIO SISR — 2025–2027 — Bouches-du-Rhône</span>
+  <span>HTML · CSS · JS · Fait maison</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

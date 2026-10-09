@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toutes mes procédures — Anthony</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Anthony · SISR</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="bts-sio.html">BTS SIO</a></li>
+    <li><a href="entreprise.html">Entreprise</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li class="has-sub">
+      <a href="projets.html" class="active">Projets</a>
+      <ul class="sub">
+        <li><a href="procedures.html">Toutes mes procédures</a></li>
+        <li><a href="projets-e5.html">Projets E5</a></li>
+        <li><a href="projets-e6.html">Projets E6</a></li>
+      </ul>
+    </li>
+    <li><a href="tcs.html">TCS</a></li>
+    <li class="has-sub">
+      <a href="veille-technologique.html">Veilles</a>
+      <ul class="sub">
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+        <li><a href="veille-juridique.html">Veille juridique</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</nav>
+
+<main>
+<section class="s-light" id="procedures">
+  <div class="section-inner">
+    <p class="s-tag">05 — Mes projets · Procédures</p>
+    <h2 class="s-title">Toutes mes procédures</h2>
+    <p class="veille-lead reveal">Les procédures de mise en place de mes projets, à ouvrir en PDF.</p>
+
+    <div class="proc-list reveal">
+      <a class="proc" href="procedure-gestion-it.pdf" target="_blank" rel="noopener">
+        <span class="proc-ext">PDF</span>
+        <div class="proc-t"><b>Outil de gestion IT</b><span>Alternance · Kem One</span></div>
+        <span class="proc-go">Ouvrir →</span>
+      </a>
+      <a class="proc" href="procedure-nexus.pdf" target="_blank" rel="noopener">
+        <span class="proc-ext">PDF</span>
+        <div class="proc-t"><b>Infrastructure Serveur Nexus</b><span>BTS · École</span></div>
+        <span class="proc-go">Ouvrir →</span>
+      </a>
+      <a class="proc" href="procedure-homelab.pdf" target="_blank" rel="noopener">
+        <span class="proc-ext">PDF</span>
+        <div class="proc-t"><b>Homelab Proxmox</b><span>Homelab · Perso</span></div>
+        <span class="proc-go">Ouvrir →</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Anthony — BTS SIO SISR — 2025–2027 — Bouches-du-Rhône</span>
+  <span>HTML · CSS · JS · Fait maison</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

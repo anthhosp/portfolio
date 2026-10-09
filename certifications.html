@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mes certifications — Anthony</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Anthony · SISR</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="bts-sio.html">BTS SIO</a></li>
+    <li><a href="entreprise.html">Entreprise</a></li>
+    <li><a href="certifications.html" class="active">Certifications</a></li>
+    <li class="has-sub">
+      <a href="projets.html">Projets</a>
+      <ul class="sub">
+        <li><a href="procedures.html">Toutes mes procédures</a></li>
+        <li><a href="projets-e5.html">Projets E5</a></li>
+        <li><a href="projets-e6.html">Projets E6</a></li>
+      </ul>
+    </li>
+    <li><a href="tcs.html">TCS</a></li>
+    <li class="has-sub">
+      <a href="veille-technologique.html">Veilles</a>
+      <ul class="sub">
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+        <li><a href="veille-juridique.html">Veille juridique</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</nav>
+
+<main>
+<!-- 04 — CERTIFICATIONS -->
+<section class="s-dark" id="certifications">
+  <div class="section-inner">
+    <p class="s-tag">04 — Mes certifications</p>
+    <h2 class="s-title">Là où j'en suis</h2>
+
+    <div class="reveal" style="display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;">
+      <div style="background:#fff;border-radius:8px;padding:1rem;flex-shrink:0;width:150px;height:150px;display:flex;align-items:center;justify-content:center;">
+        <img src="logo-ccna.png" alt="Cisco CCNA" style="max-width:100%;max-height:100%;" onerror="this.style.display='none'">
+      </div>
+      <div style="max-width:520px;">
+        <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#fb923c;margin-bottom:0.5rem;">En préparation</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--text-d);margin-bottom:0.6rem;">Cisco CCNA</h3>
+        <p style="font-size:0.92rem;color:var(--text-d2);line-height:1.8;">Réseaux : routage, commutation, VLAN, adressage IP. Entraînement sur Packet Tracer et sur mon homelab.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Anthony — BTS SIO SISR — 2025–2027 — Bouches-du-Rhône</span>
+  <span>HTML · CSS · JS · Fait maison</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

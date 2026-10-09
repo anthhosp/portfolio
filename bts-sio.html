@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BTS SIO — Anthony</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Anthony · SISR</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="bts-sio.html" class="active">BTS SIO</a></li>
+    <li><a href="entreprise.html">Entreprise</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li class="has-sub">
+      <a href="projets.html">Projets</a>
+      <ul class="sub">
+        <li><a href="procedures.html">Toutes mes procédures</a></li>
+        <li><a href="projets-e5.html">Projets E5</a></li>
+        <li><a href="projets-e6.html">Projets E6</a></li>
+      </ul>
+    </li>
+    <li><a href="tcs.html">TCS</a></li>
+    <li class="has-sub">
+      <a href="veille-technologique.html">Veilles</a>
+      <ul class="sub">
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+        <li><a href="veille-juridique.html">Veille juridique</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</nav>
+
+<main>
+<!-- 02 — BTS SIO -->
+<section class="s-light" id="bts-sio" style="background:#fff;">
+  <div class="section-inner">
+    <p class="s-tag">02 — BTS SIO</p>
+    <h2 class="s-title">Ma formation</h2>
+
+    <div class="bts-intro reveal">
+      <div>
+        <p class="bts-lead">
+          Le BTS SIO, c'est deux ans pour apprendre à faire tourner l'informatique d'une organisation.
+          Je suis l'option <strong>SISR</strong> : serveurs, réseaux, sécurité. Je le prépare en alternance,
+          entre <strong>M2S Formation</strong> à Vitrolles et la DSI de <strong>Kem One</strong> à Fos-sur-Mer,
+          donc ce que je vois en cours, je le recroise en entreprise.
+        </p>
+        <div class="bts-facts">
+          <div class="bts-fact"><b>2</b><span>ans en alternance</span></div>
+          <div class="bts-fact"><b>3</b><span>blocs de compétences</span></div>
+          <div class="bts-fact"><b>1</b><span>option : SISR</span></div>
+        </div>
+      </div>
+      <!-- REMPLACE bts-photo.jpg PAR UNE CAPTURE DE TON PROXMOX OU UNE PHOTO DE TA PROMO -->
+      <div class="bts-photo">
+        <img src="bts-photo.jpg" alt="" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+
+    <div class="lab reveal" id="lab">
+      <div class="lab-map">
+        <p class="lab-hint">Clique sur un bloc</p>
+        <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+          <line class="lk on" data-bloc="1" x1="260" y1="170" x2="90"  y2="170"/>
+          <line class="lk"    data-bloc="2" x1="260" y1="170" x2="430" y2="80"/>
+          <line class="lk"    data-bloc="3" x1="260" y1="170" x2="430" y2="260"/>
+
+          <circle class="pk" r="3.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M260,170 L90,170"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="3.1s" begin="0.9s" repeatCount="indefinite" path="M90,170 L260,170"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="2.8s" begin="0.4s" repeatCount="indefinite" path="M260,170 L430,80"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="3.3s" begin="1.3s" repeatCount="indefinite" path="M430,80 L260,170"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="3s" begin="0.7s" repeatCount="indefinite" path="M260,170 L430,260"/></circle>
+          <circle class="pk" r="3.5"><animateMotion dur="2.7s" begin="1.6s" repeatCount="indefinite" path="M430,260 L260,170"/></circle>
+
+          <g class="core">
+            <circle cx="260" cy="170" r="36"/>
+            <text x="260" y="175" text-anchor="middle">SISR</text>
+          </g>
+
+          <g class="nd on" data-bloc="1" tabindex="0" role="button" aria-label="Bloc 1 : Support">
+            <circle class="pulse" cx="90" cy="170" r="46"/>
+            <circle class="body"  cx="90" cy="170" r="46"/>
+            <text class="num" x="90" y="168" text-anchor="middle">1</text>
+            <text class="lbl" x="90" y="190" text-anchor="middle">Support</text>
+          </g>
+          <g class="nd" data-bloc="2" tabindex="0" role="button" aria-label="Bloc 2 : Administration">
+            <circle class="pulse" cx="430" cy="80" r="46"/>
+            <circle class="body"  cx="430" cy="80" r="46"/>
+            <text class="num" x="430" y="78" text-anchor="middle">2</text>
+            <text class="lbl" x="430" y="100" text-anchor="middle">Admin.</text>
+          </g>
+          <g class="nd" data-bloc="3" tabindex="0" role="button" aria-label="Bloc 3 : Cybersécurité">
+            <circle class="pulse" cx="430" cy="260" r="46"/>
+            <circle class="body"  cx="430" cy="260" r="46"/>
+            <text class="num" x="430" y="258" text-anchor="middle">3</text>
+            <text class="lbl" x="430" y="280" text-anchor="middle">Cyber</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="lab-panel" id="labPanel">
+        <div class="lp-k" id="lpK"></div>
+        <h3 id="lpT"></h3>
+        <p class="lp-def" id="lpDef"></p>
+        <div class="lp-toggle">
+          <button type="button" class="on" data-side="school">À l'école</button>
+          <button type="button" data-side="work">En entreprise</button>
+        </div>
+        <p class="lp-text" id="lpText"></p>
+        <div class="lp-chips" id="lpChips"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Anthony — BTS SIO SISR — 2025–2027 — Bouches-du-Rhône</span>
+  <span>HTML · CSS · JS · Fait maison</span>
+</footer>
+
+<script src="site.js"></script>
+<script src="bts.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mes projets — Anthony</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Anthony · SISR</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="bts-sio.html">BTS SIO</a></li>
+    <li><a href="entreprise.html">Entreprise</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li class="has-sub">
+      <a href="projets.html" class="active">Projets</a>
+      <ul class="sub">
+        <li><a href="procedures.html">Toutes mes procédures</a></li>
+        <li><a href="projets-e5.html">Projets E5</a></li>
+        <li><a href="projets-e6.html">Projets E6</a></li>
+      </ul>
+    </li>
+    <li><a href="tcs.html">TCS</a></li>
+    <li class="has-sub">
+      <a href="veille-technologique.html">Veilles</a>
+      <ul class="sub">
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+        <li><a href="veille-juridique.html">Veille juridique</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</nav>
+
+<main>
+<!-- 04 — PROJETS -->
+<section class="s-light" id="projets">
+  <div class="section-inner">
+    <p class="s-tag">05 — Mes projets</p>
+    <h2 class="s-title">Réalisations</h2>
+
+    <div class="reveal">
+      <a class="zz" href="procedure-gestion-it.pdf" target="_blank" rel="noopener">
+        <div class="zz-img"><img src="capture-gestion-it.png" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+        <div>
+          <div class="zz-kind">Alternance · Kem One</div>
+          <h3>Outil de gestion IT</h3>
+          <p>Application Python / Streamlit avec authentification LDAP / NTLM, gestion des OU Active Directory
+          et inventaire matériel SQLite. Rebuildée ensuite en PowerShell Windows Forms.</p>
+          <div class="zz-stack">Python · Streamlit · LDAP3 · SQLite · PowerShell</div>
+          <span class="zz-link">Voir la procédure →</span>
+        </div>
+      </a>
+
+      <a class="zz rev" href="procedure-nexus.pdf" target="_blank" rel="noopener">
+        <div class="zz-img"><img src="capture-nexus.png" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+        <div>
+          <div class="zz-kind">BTS · École</div>
+          <h3>Infrastructure Serveur Nexus</h3>
+          <p>Déploiement BIND9, Apache2 et Nginx sur LXC Proxmox. Domaine <span style="font-family:var(--mono);font-size:0.82em">troubleshooter.lan</span>,
+          provisionné via Terraform et Ansible.</p>
+          <div class="zz-stack">Proxmox · Terraform · Ansible · BIND9 · Nginx</div>
+          <span class="zz-link">Voir la procédure →</span>
+        </div>
+      </a>
+
+      <a class="zz" href="procedure-homelab.pdf" target="_blank" rel="noopener">
+        <div class="zz-img"><img src="capture-homelab.png" alt="" onerror="this.parentElement.classList.add('empty')"></div>
+        <div>
+          <div class="zz-kind">Homelab · Perso</div>
+          <h3>Homelab Proxmox</h3>
+          <p>Mini PC i5-8500 / 32 Go RAM. En production : OPNsense, Windows Server 2022 + AD,
+          AdGuard, GLPI, Zabbix, Ansible, Uptime Kuma et un serveur Minecraft Forge 1.20.1.</p>
+          <div class="zz-stack">Proxmox · OPNsense · Zabbix · Ansible · WinServer 2022</div>
+          <span class="zz-link">Voir la procédure →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Anthony — BTS SIO SISR — 2025–2027 — Bouches-du-Rhône</span>
+  <span>HTML · CSS · JS · Fait maison</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

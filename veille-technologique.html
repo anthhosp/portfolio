@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille technologique — Anthony</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Anthony · SISR</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="bts-sio.html">BTS SIO</a></li>
+    <li><a href="entreprise.html">Entreprise</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li class="has-sub">
+      <a href="projets.html">Projets</a>
+      <ul class="sub">
+        <li><a href="procedures.html">Toutes mes procédures</a></li>
+        <li><a href="projets-e5.html">Projets E5</a></li>
+        <li><a href="projets-e6.html">Projets E6</a></li>
+      </ul>
+    </li>
+    <li><a href="tcs.html">TCS</a></li>
+    <li class="has-sub">
+      <a href="veille-technologique.html" class="active">Veilles</a>
+      <ul class="sub">
+        <li><a href="veille-technologique.html">Veille technologique</a></li>
+        <li><a href="veille-juridique.html">Veille juridique</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</nav>
+
+<main>
+<!-- 05 — VEILLE -->
+<section class="s-light" id="veille">
+  <div class="section-inner">
+    <p class="s-tag">07 — Veille technologique</p>
+    <h2 class="s-title">Rester à jour</h2>
+
+    <p class="veille-lead reveal">
+      La veille fait partie de ma pratique quotidienne. Dans un domaine qui évolue aussi vite que l'IT,
+      rester à jour n'est pas optionnel. Je suis <strong>quatre axes en parallèle</strong>, tous ancrés dans
+      des problématiques que je rencontre concrètement en entreprise ou dans mon homelab.
+    </p>
+
+    <div class="veille-grid reveal">
+      <div class="v-card">
+        <h3>Cybersécurité</h3>
+        <p>Suivi des CVE critiques, nouvelles techniques d'attaque et pratiques de durcissement.
+        Intérêt particulier pour la sécurité AD et la détection d'intrusion en environnement industriel.</p>
+        <ul class="v-list">
+          <li>CVE critiques</li>
+          <li>Sécurisation Active Directory / GPO</li>
+          <li>Attaques sur environnements OT/IT industriels</li>
+          <li>Wazuh, Suricata, Snort</li>
+        </ul>
+        <button class="v-card-btn" onclick="openVeille()">CVE-2026-31431 — Copy Fail →</button>
+      </div>
+
+      <div class="v-card">
+        <h3>Infrastructure & Cloud</h3>
+        <p>Veille sur les outils utilisés en homelab et en entreprise. Préparation progressive
+        vers les certifications réseau (CCNA) et cloud.</p>
+        <ul class="v-list">
+          <li>Proxmox VE — nouvelles releases</li>
+          <li>Kubernetes, Docker, conteneurisation</li>
+          <li>Évolutions Terraform / Ansible</li>
+          <li>Cloud hybride : Azure AD, AWS basics</li>
+        </ul>
+      </div>
+
+      <div class="v-card">
+        <h3>Réseau & Protocoles</h3>
+        <p>Suivi des évolutions protocolaires en préparation du CCNA.
+        Pratique sur Packet Tracer et GNS3 en parallèle des cours.</p>
+        <ul class="v-list">
+          <li>BGP, OSPF — routage dynamique</li>
+          <li>Wi-Fi 6E / 7 en déploiement entreprise</li>
+          <li>SD-WAN — réseaux définis par logiciel</li>
+          <li>Adoption progressive IPv6</li>
+        </ul>
+      </div>
+
+      <div class="v-card">
+        <h3>Réglementation</h3>
+        <p>Suivi des évolutions réglementaires impactant les DSI. NIS2 et RGPD sont des sujets
+        concrets chez Kem One, secteur industriel soumis à des normes strictes.</p>
+        <ul class="v-list">
+          <li>Directive NIS2 — entrée en vigueur</li>
+          <li>RGPD — jurisprudence CNIL 2024/25</li>
+          <li>Cybersécurité industrielle ICS/SCADA</li>
+          <li>ISO 27001 / 27005</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sources-block reveal">
+      <h4>Sources utilisées</h4>
+      <div class="sources-pills">
+        <span class="src-pill">The Hacker News</span>
+        <span class="src-pill">ANSSI</span>
+        <span class="src-pill">CISA Alerts</span>
+        <span class="src-pill">Claude</span>
+        <span class="src-pill">CNIL</span>
+        <span class="src-pill">Reddit r/sysadmin</span>
+        <span class="src-pill">Proxmox Forums</span>
+        <span class="src-pill">Jeremy's IT Lab</span>
+        <span class="src-pill">Techno Tim</span>
+        <span class="src-pill">NetworkChuck</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="modal-veille" style="visibility:hidden;pointer-events:none;position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;padding:2rem;">
+  <div id="modal-bg" onclick="closeVeille()" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);opacity:0;transition:opacity 0.25s ease;cursor:zoom-out;"></div>
+  <div id="modal-box" style="position:relative;z-index:1;background:#ffffff;border:1px solid rgba(0,0,0,0.1);border-radius:10px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;padding:2.5rem;opacity:0;transform:translateY(24px) scale(0.97);transition:opacity 0.3s ease,transform 0.3s cubic-bezier(0.22,1,0.36,1);">
+    <button onclick="closeVeille()" style="position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;font-size:1.2rem;color:#5a6272;cursor:pointer;">✕</button>
+
+    <div style="display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.65rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);color:#dc2626;padding:0.25rem 0.75rem;border-radius:3px;letter-spacing:0.08em;margin-bottom:1rem;">
+      <span style="width:6px;height:6px;background:#dc2626;border-radius:50%;display:inline-block;animation:blink 1.5s infinite;"></span>
+      CVE-2026-31431 — Critique
+    </div>
+
+    <div style="font-size:1.3rem;font-weight:700;color:#1a1f2e;margin-bottom:0.3rem;letter-spacing:-0.02em;line-height:1.2;">Copy Fail — Escalade de privilèges QNAP</div>
+    <div style="font-size:0.82rem;color:#5a6272;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(0,0,0,0.09);">Vulnérabilité noyau Linux · Kernel 5.10 ARM64 · QTS (QNAP) · Mai 2026</div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">La faille</div>
+      <p style="font-size:0.85rem;color:#5a6272;line-height:1.8;margin-bottom:0.5rem;text-align:justify;"><strong style="color:#1a1f2e;">CVE-2026-31431</strong>, surnommée "Copy Fail", est une vulnérabilité critique d'<strong style="color:#1a1f2e;">escalade locale de privilèges (LPE)</strong> découverte début mai 2026. Elle affecte le noyau Linux et par extension les NAS QNAP sous architecture ARM64 tournant sur QTS avec le kernel 5.10.</p>
+      <p style="font-size:0.85rem;color:#5a6272;line-height:1.8;text-align:justify;">Un attaquant avec de simples droits utilisateur exploite un bug dans le sous-système cryptographique via les sockets <code style="font-family:var(--mono);font-size:0.82em">AF_ALG</code> et l'appel système <code style="font-family:var(--mono);font-size:0.82em">splice</code> pour corrompre en mémoire des fichiers critiques comme <code style="font-family:var(--mono);font-size:0.82em">/etc/passwd</code> et obtenir les droits root — sans trace sur le disque.</p>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">Pourquoi c'est important</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Furtivité absolue</strong> — modification en mémoire vive uniquement, contourne les antivirus et contrôles d'intégrité classiques.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Exploit public disponible</strong> — activement ciblée par des cybercriminels depuis sa publication.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span><strong style="color:#1a1f2e;">Danger des conteneurs</strong> — Docker partage le même noyau que le NAS. Compromettre un conteneur suffit à prendre le contrôle total de l'hôte.</span></li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">Risques pour Kem One</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#22c55e;flex-shrink:0;">✓</span><span>Après vérification, les NAS déployés chez Kem One sont des <strong style="color:#1a1f2e;">TS-853BU-RP</strong> (architecture x86_64, Intel Celeron J3455). La faille ciblant exclusivement les architectures <strong style="color:#1a1f2e;">ARM64</strong>, ces modèles <strong style="color:#1a1f2e;">ne sont pas impactés</strong>.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#dc2626;flex-shrink:0;">▸</span><span>Si d'autres modèles ARM64 venaient à être déployés, les risques seraient réels : <strong style="color:#1a1f2e;">vol de données</strong>, <strong style="color:#1a1f2e;">ransomware</strong>, ou <strong style="color:#1a1f2e;">rebond vers l'Active Directory</strong>.</span></li>
+      </ul>
+    </div>
+    
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2563eb;margin-bottom:0.6rem;">Solutions</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#22c55e;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Audit d'éligibilité effectué</strong> — les NAS Kem One (TS-853BU-RP, x86_64) ne sont pas concernés par cette CVE. Démarche à reconduire sur tout nouveau NAS avant déploiement.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Mise à jour</strong> — appliquer le patch officiel QNAP dès sa sortie sur tout modèle ARM64 (avis QSA-26-16).</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Désactiver les services inutiles</strong> — couper le serveur web intégré s'il n'est pas utilisé.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Restreindre SSH/Telnet</strong> — aux seuls administrateurs, aucun utilisateur classique ne doit pouvoir exécuter un shell.</span></li>
+        <li style="font-size:0.83rem;color:#5a6272;line-height:1.7;display:flex;gap:0.75rem;align-items:flex-start;"><span style="color:#2563eb;flex-shrink:0;font-weight:700;">✓</span><span><strong style="color:#1a1f2e;">Isoler réseau</strong> — NAS derrière un pare-feu strict, jamais exposés directement sur internet.</span></li>
+      </ul>
+    </div>
+
+    <div style="background:rgba(37,99,235,0.05);border-left:3px solid #2563eb;padding:0.85rem 1rem;border-radius:0 4px 4px 0;font-size:0.82rem;color:#5a6272;line-height:1.75;font-style:italic;">
+      Cette veille m'a permis de comprendre l'importance de la sécurité des noyaux Linux dans le monde du stockage, et m'a poussé à auditer notre propre parc de NAS chez Kem One pour m'assurer que nos infrastructures de production ne sont pas exposées.
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <span>Anthony — BTS SIO SISR — 2025–2027 — Bouches-du-Rhône</span>
+  <span>HTML · CSS · JS · Fait maison</span>
+</footer>
+
+<script src="site.js"></script>
+<script src="veille.js"></script>
+</body>
+</html>
